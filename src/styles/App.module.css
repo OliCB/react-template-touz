@@ -28,3 +28,43 @@
   background: #f5f5f5;
   border-radius: 4px;
 }
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th,
+td {
+  height: 2.5rem;
+}
+
+.table {
+  width: 50%;
+}
+
+.proc-failed,
+.proc-running,
+.proc-succeeded,
+.proc-pending {
+  display: inline;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: rgb(201, 201, 201) 0 0 1rem 1px;
+}
+
+.proc-running {
+  background-color: yellow;
+}
+
+.proc-succeeded {
+  background-color: greenyellow;
+}
+
+.proc-failed {
+  background-color: red;
+  color: white;
+}

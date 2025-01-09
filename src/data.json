@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "processes": [
+        {
+          "id": "proc-001",
+          "status": "Running"
+        },
+        {
+          "id": "proc-002",
+          "status": "Succeeded"
+        },
+        {
+          "id": "proc-003",
+          "status": "Failed"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "processes": [
+        {
+          "id": "proc-004",
+          "status": "Running"
+        },
+        {
+          "id": "proc-005",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "processes": [
+        {
+          "id": "proc-006",
+          "status": "Succeeded"
+        },
+        {
+          "id": "proc-007",
+          "status": "Failed"
+        },
+        {
+          "id": "proc-008",
+          "status": "Running"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "processes": [
+        {
+          "id": "proc-009",
+          "status": "Failed"
+        },
+        {
+          "id": "proc-010",
+          "status": "Succeeded"
+        }
+      ]
+    }
+  ]
+}
