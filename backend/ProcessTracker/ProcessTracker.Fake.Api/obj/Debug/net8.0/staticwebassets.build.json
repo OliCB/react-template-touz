@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "JbKUI+I25uXSsfa7ihIA78idfsuajsiVvNzdRHlqplg=",
+  "Source": "ProcessTracker.Fake.Api",
+  "BasePath": "_content/ProcessTracker.Fake.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

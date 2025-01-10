@@ -1,0 +1,6 @@
+@ProcessTracker.Fake.Api_HostAddress = http://localhost:5208
+
+GET {{ProcessTracker.Fake.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
