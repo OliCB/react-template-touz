@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/ProcessTracker.Fake.Api.props" />
-</Project>
