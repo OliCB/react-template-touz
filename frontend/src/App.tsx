@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import styles from "./styles/App.module.css";
 import { User } from "./types/User";
-import { Status } from "./types/Status";
 import { useMemo, useState } from "react";
+import { UserProcesses } from "./UserProcesses";
 
 export default function App() {
   const { data } = useQuery<User[]>({
@@ -16,7 +16,9 @@ export default function App() {
 
   const [userFilter, setUserFilter] = useState<string | undefined>();
   const filteredUsers = useMemo(
-    () => (userFilter ? data?.filter((user) => user.id === userFilter) : data),
+    () =>
+      (userFilter ? data?.filter((user) => user.id === userFilter) : data) ??
+      [],
     [data, userFilter]
   );
   const userIds = useMemo(() => data?.map((user) => user.id), [data]);
@@ -43,34 +45,7 @@ export default function App() {
           ]}
         </select>
       </form>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>User Id</th>
-            <th>Process Id</th>
-            <th>Process Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredUsers?.map((user) =>
-            user.processes.map((process) => (
-              <tr key={`${user.id}-${process.id}`}>
-                <td>{user.id}</td>
-                <td>{process.id}</td>
-                <td>
-                  <div
-                    className={
-                      styles[`proc-${Status[process.status].toLowerCase()}`]
-                    }
-                  >
-                    {Status[process.status]}
-                  </div>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+      <UserProcesses filteredUsers={filteredUsers} />
     </div>
   );
 }
