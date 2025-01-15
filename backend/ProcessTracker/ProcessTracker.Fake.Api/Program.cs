@@ -10,11 +10,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CORS",
+    options.AddDefaultPolicy(
         policy  =>
         {
-            policy.AllowAnyOrigin();
-            policy.AllowAnyHeader();
+            policy.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
         });
 });
 
@@ -31,7 +32,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("CORS");
+app.UseCors();
 
 app.MapGet("/users", () =>
     {
