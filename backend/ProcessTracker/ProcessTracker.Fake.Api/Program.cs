@@ -1,3 +1,6 @@
+using MailerSendNetCore.Common.Extensions;
+using ProcessTracker.Fake.Api.Endpoints;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +18,8 @@ builder.Services.AddCors(options =>
         });
 });
 
+builder.Services.AddMailerSendEmailClient(builder.Configuration.GetSection("MailerSend"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,11 +33,6 @@ app.UseHttpsRedirection();
 
 app.UseCors("CORS");
 
-var statuses = new[]
-{
-    "Pending", "Running", "Succeeded", "Failed"
-};
-
 app.MapGet("/users", () =>
     {
         var rand = new Random();
@@ -43,6 +43,10 @@ app.MapGet("/users", () =>
     })
     .WithName("GetUsers")
     .WithOpenApi();
+
+app.MapPost("/email", PostEmailEndpoint.PostEmail);
+
+
 
 app.Run();
 
