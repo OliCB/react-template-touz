@@ -6,6 +6,8 @@ import App from "./App";
 import "./styles/base/reset.css";
 import { Layout } from "./Layout";
 import { Email } from "./Email";
+import { MailerSend } from "./types/MailerSend";
+import { SendGrid } from "./types/SendGrid";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient({
@@ -25,7 +27,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<App />} />
-            <Route path="email" element={<Email />} />
+            <Route path="email" element={<MailerSend />} />
+            <Route path="email-sendgrid" element={<SendGrid />} />
           </Route>
         </Routes>
       </BrowserRouter>

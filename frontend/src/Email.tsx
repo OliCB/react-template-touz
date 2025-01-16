@@ -1,26 +1,18 @@
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Button, Box } from "@mui/material";
 
-type FormValues = {
+export type FormValues = {
   recipientEmail: string;
   subject: string;
   body: string;
 };
 
-export const Email = () => {
+export const Email = ({
+  onSubmit,
+}: {
+  onSubmit: (values: FormValues) => Promise<void>;
+}) => {
   const { control, handleSubmit, reset } = useForm<FormValues>();
-
-  const onSubmit = async (data: FormValues) => {
-    const rawResponse = await fetch("http://localhost:5208/email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    reset();
-    console.log(rawResponse);
-  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>

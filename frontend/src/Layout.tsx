@@ -27,6 +27,13 @@ export const Layout = () => {
           >
             Courriel
           </Button>
+          <Button
+            variant="text"
+            sx={{ textDecoration: "underline", color: "#cdcdcd" }}
+            onClick={() => navigate("/email-sendgrid")}
+          >
+            SendGrid
+          </Button>
         </Stack>
       </Stack>
       <Box sx={{ maxWidth: "1200px", margin: "0 auto", padding: "2rem" }}>
