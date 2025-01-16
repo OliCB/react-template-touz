@@ -1,5 +1,6 @@
 using MailerSendNetCore.Common.Extensions;
 using ProcessTracker.Fake.Api.Endpoints;
+using SendGrid.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,11 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddMailerSendEmailClient(builder.Configuration.GetSection("MailerSend"));
+
+builder.Services.AddSendGrid(options =>
+{
+    options.ApiKey = Environment.GetEnvironmentVariable("SENDGRID_KEY_TESTING");
+});
 
 var app = builder.Build();
 
@@ -46,6 +52,8 @@ app.MapGet("/users", () =>
     .WithOpenApi();
 
 app.MapPost("/email", PostEmailEndpoint.PostEmail);
+
+app.MapPost("/email-sendgrid", PostEmailSendGridEndpoint.PostEmailSendGrid);
 
 
 
